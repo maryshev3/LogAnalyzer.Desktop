@@ -1,7 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
 using System;
+using System.IO;
 using LogAnalyzer.Desktop.ViewModels;
+using LogAnalyzer.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LogAnalyzer.Desktop;
@@ -37,7 +40,26 @@ sealed class Program
     {
         var services = new ServiceCollection();
         
+        // Регистрируем IConfiguration.
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile(
+                "settings.json",
+                optional: false,
+                reloadOnChange: true);
+        
+        IConfiguration configuration = builder.Build();
+        
         // Регистрируем сервисы.
+        services.AddSingleton<IConfiguration>(configuration);
+        
+        services.AddHttpClient<LogAnalyzerClient>((provider, client) =>
+        {
+            client.BaseAddress = provider
+                .GetRequiredService<IConfiguration>()
+                .GetValue<Uri>("LogAnalyzerBaseUrl");
+        });
+        
         services.AddSingleton<MainWindowViewModel>();
         services.AddTransient<FilesUploadeViewModel>();
         

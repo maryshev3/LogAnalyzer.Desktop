@@ -25,6 +25,19 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.7"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LogAnalyzer.Services\LogAnalyzer.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="settings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>
