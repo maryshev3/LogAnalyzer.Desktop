@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyzer.Desktop", "LogAnalyzer.Desktop\LogAnalyzer.Desktop.csproj", "{7F3573A1-FE7E-401E-84D7-CDD02AC5C825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyzer.Services", "LogAnalyzer.Services\LogAnalyzer.Services.csproj", "{F17B6F21-8CA9-4D89-8DFE-30E12CB0D2EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F3573A1-FE7E-401E-84D7-CDD02AC5C825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3573A1-FE7E-401E-84D7-CDD02AC5C825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3573A1-FE7E-401E-84D7-CDD02AC5C825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3573A1-FE7E-401E-84D7-CDD02AC5C825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F17B6F21-8CA9-4D89-8DFE-30E12CB0D2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17B6F21-8CA9-4D89-8DFE-30E12CB0D2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17B6F21-8CA9-4D89-8DFE-30E12CB0D2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17B6F21-8CA9-4D89-8DFE-30E12CB0D2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:LogAnalyzer.Desktop.ViewModels"
+             xmlns:svg="using:Avalonia.Svg.Skia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LogAnalyzer.Desktop.Views.FilesUploadeView"
+             x:DataType="vm:FilesUploadeViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:FilesUploadeViewModel/>
+    </Design.DataContext>
+    <Border
+        DragDrop.AllowDrop="True"
+        BorderThickness="1"
+        CornerRadius="10"
+        BorderBrush="{StaticResource BorderColor}"
+        Padding="20"
+        Cursor="Hand"
+        Background="{StaticResource SecondBackground}">
+        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, Auto">
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Загрузите файлы с логами"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0"
+                ColumnDefinitions="*, Auto, *"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0, 20, 0, 20">
+                <Separator
+                    Grid.Column="0"
+                    Background="{StaticResource SecondText}"/>
+                <TextBlock
+                    Grid.Column="1"
+                    Text="или"
+                    Width="30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontStyle="Italic"
+                    Foreground="{StaticResource SecondText}"/>
+                <Separator
+                    Grid.Column="2"
+                    Background="{StaticResource SecondText}"/>
+            </Grid>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Перетащите/вставьте (Ctrl + V)"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+            <svg:Svg
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Path="avares://LogAnalyzer.Desktop/Assets/multiFiles.svg"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="50"
+                Height="50"
+                Margin="20, 0, 0, 0"/>
+        </Grid>
+    </Border>
+</UserControl>
