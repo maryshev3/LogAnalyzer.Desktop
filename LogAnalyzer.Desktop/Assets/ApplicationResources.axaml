@@ -4,4 +4,5 @@
     <SolidColorBrush x:Key="SecondBackground" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="BorderColor" Color="#DBDDE1"/>
     <SolidColorBrush x:Key="SecondText" Color="Gray"/>
+    <SolidColorBrush x:Key="OveredDragAndDropBorderBrush" Color="LightGreen"/>
 </ResourceDictionary>

@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:LogAnalyzer.Desktop.ViewModels"
              xmlns:svg="using:Avalonia.Svg.Skia"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
              x:Class="LogAnalyzer.Desktop.Views.FilesUploadeView"
-             x:DataType="vm:FilesUploadeViewModel">
+             x:DataType="vm:FilesUploadeViewModel"
+             Background="Transparent">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:FilesUploadeViewModel/>
     </Design.DataContext>
     <Border
+        x:Name="DragAndDropElement"
         DragDrop.AllowDrop="True"
         BorderThickness="1"
         CornerRadius="10"
