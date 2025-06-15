@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 using LogAnalyzer.Desktop.Messages;
@@ -61,10 +62,24 @@ public class MainWindowViewModel : ViewModelBase
                     return;
                 }
 
-                ParseAndAnalyzeResult analyzeResult = await _logAnalyzerClient.AnalyzeFilesAsync(
-                    message.FullPathes);
-
-                IsAnalyzeActive = false;
+                try
+                {
+                    ParseAndAnalyzeResult analyzeResult = await _logAnalyzerClient.AnalyzeFilesAsync(
+                        message.FullPathes);
+                }
+                catch (Exception ex)
+                {
+                    var messageBox = MessageBoxManager.GetMessageBoxStandard(
+                        "Ошибка",
+                        $"Произошла ошибка при анализе логов:{Environment.NewLine}{ex.ToString()}",
+                        ButtonEnum.Ok);
+                    
+                    await messageBox.ShowAsync();
+                }
+                finally
+                {
+                    IsAnalyzeActive = false;
+                }
             }));
     }
 }

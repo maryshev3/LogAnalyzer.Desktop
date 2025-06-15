@@ -3,6 +3,7 @@
         xmlns:vm="using:LogAnalyzer.Desktop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
         xmlns:svg="using:Avalonia.Svg.Skia"
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
         Width="500"
@@ -19,8 +20,17 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
-    <ContentControl
-        Content="{Binding CurrentViewModel}"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"/>
+    <Grid>
+        <ContentControl
+            Content="{Binding CurrentViewModel}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        
+        <Border Background="#80000000" IsVisible="{Binding IsAnalyzeActive}">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <progRing:ProgressRing Width="50" Height="50" IsActive="{Binding IsAnalyzeActive}" />
+                <TextBlock Text="Загрузка..." Foreground="White" Margin="0,10,0,0" />
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>
