@@ -7,7 +7,9 @@
              mc:Ignorable="d"
              x:Class="LogAnalyzer.Desktop.Views.FilesUploadeView"
              x:DataType="vm:FilesUploadeViewModel"
-             Background="Transparent">
+             Background="Transparent"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->

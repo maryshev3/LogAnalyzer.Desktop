@@ -14,22 +14,33 @@ namespace LogAnalyzer.Desktop.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     private readonly LogAnalyzerClient _logAnalyzerClient;
-    private ViewModelBase _currentViewModel;
 
     private bool _isAnalyzeActive;
-
     public bool IsAnalyzeActive
     {
         get => _isAnalyzeActive;
         set => this.RaiseAndSetIfChanged(ref _isAnalyzeActive, value);
     }
     
+    private ViewModelBase _currentViewModel;
     public ViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
-        set => this.RaiseAndSetIfChanged(ref _currentViewModel, value);
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _currentViewModel, value);
+            this.RaisePropertyChanged(nameof(IsToLoadButtonActive));
+        }
     }
 
+    public bool IsToLoadButtonActive =>
+        CurrentViewModel is not FilesUploadeViewModel;
+
+    public void ToLoadView()
+    {
+        CurrentViewModel = Program.GetRequiredService<FilesUploadeViewModel>();
+    }
+    
     public MainWindowViewModel(LogAnalyzerClient logAnalyzerClient)
     {
         _logAnalyzerClient = logAnalyzerClient;
@@ -66,6 +77,8 @@ public class MainWindowViewModel : ViewModelBase
                 {
                     ParseAndAnalyzeResult analyzeResult = await _logAnalyzerClient.AnalyzeFilesAsync(
                         message.FullPathes);
+
+                    CurrentViewModel = new AnalyzeResultTabSwticherViewModel();
                 }
                 catch (Exception ex)
                 {
