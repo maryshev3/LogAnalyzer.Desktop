@@ -13,7 +13,7 @@ public class LogAnalyzerClient
     {
         _httpClient = httpClient;
 
-        _analyzeFilesEndpoint = new Uri("analyze");
+        _analyzeFilesEndpoint = new Uri(httpClient.BaseAddress, "/analyze");
     }
 
     public async Task<ParseAndAnalyzeResult> AnalyzeFilesAsync(IEnumerable<string> fullFileNames)
@@ -22,9 +22,9 @@ public class LogAnalyzerClient
 
         foreach (var fullFileName in fullFileNames)
         {
-            using var fileStream = File.OpenRead(fullFileName);
+            var fileStream = File.OpenRead(fullFileName);
             
-            using var streamContent = new StreamContent(fileStream);
+            var streamContent = new StreamContent(fileStream);
             
             formData.Add(streamContent, "logFiles", Path.GetFileName(fullFileName));
         }

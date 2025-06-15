@@ -3,6 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using LogAnalyzer.Desktop.Messages;
+using ReactiveUI;
 
 namespace LogAnalyzer.Desktop.Views;
 
@@ -71,6 +73,12 @@ public partial class FilesUploadeView : UserControl
             var files = e.Data.GetFileNames();
             
             // Обработка файлов.
+            MessageBus
+                .Current
+                .SendMessage(new FilePathesMessage()
+                {
+                    FullPathes = files
+                });
         }
     }
 
