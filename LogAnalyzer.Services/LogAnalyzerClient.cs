@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using LogParser.Models;
+using Newtonsoft.Json;
 
 namespace LogAnalyzer.Services;
 
@@ -34,8 +35,13 @@ public class LogAnalyzerClient
             formData
         );
 
-        var deserializedResponse = await httpResponse.Content.ReadFromJsonAsync
-            <ParseAndAnalyzeResult>();
+        var responseJsonText = await httpResponse.Content.ReadAsStringAsync();
+
+        var deserializedResponse = JsonConvert
+            .DeserializeObject<ParseAndAnalyzeResult>(responseJsonText, new JsonSerializerSettings()
+            {
+                Converters = new List<JsonConverter> { new LogLevelConverter() }
+            });
 
         return deserializedResponse;
     }

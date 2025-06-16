@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:vm="using:LogAnalyzer.Desktop.ViewModels"
+             x:DataType="vm:AnalyzeResultTabSwticherViewModel"
              x:Class="LogAnalyzer.Desktop.Views.AnalyzeResultTabSwticherView">
     <UserControl.Styles>
         <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
@@ -10,10 +12,23 @@
         </Style>
     </UserControl.Styles>
     
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:AnalyzeResultTabSwticherViewModel/>
+    </Design.DataContext>
+    
     <Grid Background="Transparent">
         <TabControl Margin="5">
             <TabItem Header="Анализ">
-                <TextBlock Margin="5">This is tab 1 content</TextBlock>
+                <ScrollViewer
+                    Margin="5"
+                    VerticalScrollBarVisibility="Auto">
+                    <TextBlock
+                        Margin="5"
+                        Text="{Binding AnalyzeContent}"
+                        TextWrapping="WrapWithOverflow"/>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Список ошибок">
                 <TextBlock Margin="5">This is tab 2 content</TextBlock>

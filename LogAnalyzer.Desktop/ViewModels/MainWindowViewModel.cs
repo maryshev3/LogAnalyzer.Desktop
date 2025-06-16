@@ -78,7 +78,7 @@ public class MainWindowViewModel : ViewModelBase
                     ParseAndAnalyzeResult analyzeResult = await _logAnalyzerClient.AnalyzeFilesAsync(
                         message.FullPathes);
 
-                    CurrentViewModel = new AnalyzeResultTabSwticherViewModel();
+                    CurrentViewModel = new AnalyzeResultTabSwticherViewModel(analyzeResult);
                 }
                 catch (Exception ex)
                 {
