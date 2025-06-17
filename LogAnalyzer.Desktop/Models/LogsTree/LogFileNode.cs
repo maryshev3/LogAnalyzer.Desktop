@@ -19,7 +19,7 @@ public class LogFileNode : ILogsTreeNode
             .ToList();
     }
 
-    public string Content => SourceFileName;
+    public string Content => $"({Children.Count}) {SourceFileName}";
 
     public override string ToString()
     {

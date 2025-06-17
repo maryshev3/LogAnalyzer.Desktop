@@ -11,7 +11,7 @@
         x:Class="LogAnalyzer.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="LogAnalyzer.Desktop"
+        Title="Анализ логов"
         Background="{StaticResource MainBackground}">
 
     <Design.DataContext>
