@@ -22,7 +22,7 @@
         <TabControl Margin="5">
             <TabItem Header="Анализ">
                 <ScrollViewer
-                    Margin="5"
+                    Margin="10, 5, 5, 5"
                     VerticalScrollBarVisibility="Auto">
                     <TextBlock
                         Margin="5"
@@ -31,7 +31,40 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Список ошибок">
-                <TextBlock Margin="5">This is tab 2 content</TextBlock>
+                <Grid
+                    ColumnDefinitions="3*, 7*">
+                    <ScrollViewer
+                        Grid.Column="0"
+                        Margin="0, 5, 5, 5"
+                        HorizontalScrollBarVisibility="Auto">
+                        <TreeView
+                            ItemsSource="{Binding ErrorsInFiles}"
+                            SelectedItem="{Binding SelectedItem}">
+                            <TreeView.ItemTemplate>
+                                <TreeDataTemplate
+                                    ItemsSource="{Binding Children}">
+                                    <TextBlock 
+                                        Text="{Binding Content}"/>
+                                </TreeDataTemplate>
+                            </TreeView.ItemTemplate>
+                        </TreeView>
+                    </ScrollViewer>
+                    <Border
+                        Margin="0, 0, 0, 0"
+                        Padding="10"
+                        Grid.Column="1"
+                        CornerRadius="0"
+                        BorderThickness="2, 0, 0, 0"
+                        BorderBrush="{StaticResource BorderColor}"
+                        Background="Transparent">
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="Auto"
+                            VerticalScrollBarVisibility="Auto">
+                            <TextBlock
+                                Text="{Binding SelectedItem}"/>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
