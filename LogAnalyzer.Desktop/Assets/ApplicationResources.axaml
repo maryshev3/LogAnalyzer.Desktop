@@ -2,10 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="MainBackground" Color="#F6F8FA"/>
     <SolidColorBrush x:Key="SecondBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="GrayBackground" Color="#F2F2F2"/>
     <SolidColorBrush x:Key="YellowBackground" Color="#F3EDD8"/>
     <SolidColorBrush x:Key="LoadingBackground" Color="#80000000"/>
     <SolidColorBrush x:Key="BorderColor" Color="#DBDDE1"/>
     <SolidColorBrush x:Key="SecondText" Color="Gray"/>
     <SolidColorBrush x:Key="OveredDragAndDropBorderBrush" Color="LightGreen"/>
     <SolidColorBrush x:Key="YellowBorderBrush" Color="#f7d045"/>
+    <SolidColorBrush x:Key="YellowForeground" Color="#bd9e2d"/>
 </ResourceDictionary>

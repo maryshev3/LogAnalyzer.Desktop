@@ -20,7 +20,7 @@
     
     <Grid Background="Transparent">
         <TabControl Margin="5">
-            <TabItem Header="Анализ">
+            <TabItem Header="Анализ" FontSize="20">
                 <ScrollViewer
                     Margin="10, 5, 5, 5"
                     VerticalScrollBarVisibility="Auto">
@@ -30,7 +30,7 @@
                         TextWrapping="WrapWithOverflow"/>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Список ошибок">
+            <TabItem Header="Список ошибок" FontSize="20">
                 <Grid
                     ColumnDefinitions="3*, 7*">
                     <ScrollViewer
@@ -38,8 +38,20 @@
                         Margin="0, 5, 5, 5"
                         HorizontalScrollBarVisibility="Auto">
                         <TreeView
+                            Background="Transparent"
                             ItemsSource="{Binding ErrorsInFiles}"
                             SelectedItem="{Binding SelectedItem}">
+                            <TreeView.Styles>
+                                <Style Selector="TreeViewItem:selected">
+                                    <Setter Property="Foreground" Value="{StaticResource YellowForeground}"/>
+                                </Style>
+                                <Style Selector="TreeViewItem:selected /template/ Border">
+                                    <Setter Property="Background" Value="{StaticResource GrayBackground}"/>
+                                </Style>
+                                <Style Selector="TreeViewItem:pointerover /template/ Border#PART_Border">
+                                    <Setter Property="Background" Value="{StaticResource GrayBackground}"/>
+                                </Style>
+                            </TreeView.Styles>
                             <TreeView.ItemTemplate>
                                 <TreeDataTemplate
                                     ItemsSource="{Binding Children}">

@@ -8,8 +8,9 @@
              x:Class="LogAnalyzer.Desktop.Views.FilesUploadeView"
              x:DataType="vm:FilesUploadeViewModel"
              Background="Transparent"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center">
+             Margin="50"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
@@ -24,13 +25,18 @@
         Padding="20"
         Cursor="Hand"
         Background="{StaticResource SecondBackground}">
-        <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, Auto">
+        <Grid 
+            RowDefinitions="Auto, Auto, Auto" 
+            ColumnDefinitions="*, Auto"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
                 Text="Загрузите файлы с логами"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"
+                FontSize="16"/>
             <Grid
                 Grid.Row="1"
                 Grid.Column="0"
@@ -57,6 +63,7 @@
                 Grid.Row="2"
                 Grid.Column="0"
                 Text="Перетащите/вставьте (Ctrl + V)"
+                FontSize="16"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
             <svg:Svg
@@ -65,8 +72,8 @@
                 Path="avares://LogAnalyzer.Desktop/Assets/multiFiles.svg"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Width="50"
-                Height="50"
+                Width="60"
+                Height="60"
                 Margin="20, 0, 0, 0"/>
         </Grid>
     </Border>
