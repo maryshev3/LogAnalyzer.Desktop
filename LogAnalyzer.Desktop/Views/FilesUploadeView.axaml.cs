@@ -1,8 +1,10 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.VisualTree;
 using LogAnalyzer.Desktop.Messages;
 using ReactiveUI;
 
@@ -81,5 +83,25 @@ public partial class FilesUploadeView : UserControl
                 });
         }
     }
+    
+    private async void Border_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+    {
+        var dialog = new OpenFileDialog
+        {
+            AllowMultiple = true
+        };
 
+        var window = this.FindAncestorOfType<Window>();
+        var files = await dialog.ShowAsync(window);
+
+        if (files != null && files.Length > 0)
+        {
+            MessageBus
+                .Current
+                .SendMessage(new FilePathesMessage()
+                {
+                    FullPathes = files
+                });
+        }
+    }
 }

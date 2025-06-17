@@ -19,6 +19,7 @@
     <Border
         x:Name="DragAndDropElement"
         DragDrop.AllowDrop="True"
+        PointerPressed="Border_PointerPressed"
         BorderThickness="1"
         CornerRadius="10"
         BorderBrush="{StaticResource BorderColor}"
