@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Controls;
@@ -35,7 +36,7 @@ public partial class MainWindow : Window
             if (data != null && data is IEnumerable<IStorageItem> files)
             {
                 var filePathes = files
-                    .Select(x => x.Path.AbsolutePath)
+                    .Select(x => Uri.UnescapeDataString(x.Path.AbsolutePath))
                     .ToList();
                 
                 MessageBus
